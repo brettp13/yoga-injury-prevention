@@ -1,0 +1,81 @@
+# Ignore dbdump file 
+bin/db.sql
+
+# Ignore virtualenv
+python-env/
+
+# Ignore .pyc files
+*.pyc
+
+# Ignore db migrations
+*/migrations/*
+
+# Ignore project info file
+project-info.txt
+
+# Ignore .envrc file
+.envrc
+
+# Ignore real environment secrets (use .env.example as the committed template)
+application/dev-stack/.env
+application/prod-stack/.env
+.env
+
+# Ignore sensitive NGINX files
+application/nginx/prod/
+
+# Ignore local development db file
+application/webapp/yip/db.sqlite3
+
+# Ignore .vscode
+.vscode/
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+/application/webapp/yip/static/angular
+
+# Ignore Mockups
+/mockups/*
+
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db

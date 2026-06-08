@@ -1,0 +1,222 @@
+<div class="container-fluid p-0 video">
+  <video autoplay [muted]="true" loop class="embed-responsive video-section" id="landingVideo">
+    <source class="embed-responsive-item" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/angular/assets/video/yip-background.mp4" type="video/mp4" />
+  </video>
+
+    <div class="content">
+      <div class="row justify-content-center m-0">
+
+        <!-- Show alerts if exist -->
+        <div *ngIf="alert" class="col-sm-12 col-lg-8">
+        <div [ngClass]="{'alert alert-danger': alertType === 'cancel',
+                         'alert alert-warning': alertType === 'loggedout'}">
+          <p>{{alertText}}</p>   
+        </div>
+        </div>
+        <!-- End alert -->
+
+        <div class="col-xl-8 col-sm-12">
+          <div class="readability">
+            <h1 class="header">LEARN BENEFICIAL, SAFE AND DANGEROUS POSES FOR 100 COMMON CONDITIONS</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row m-0">
+        <div class="col-12">
+          <a class="btn btn-call-to-action btn-generic"
+             routerLink="/join-yip">
+            <span class="call-to-action">TRY YIP.GURU FOR FREE</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section container">
+      <div class="row info-row p-0">
+        <div class="col-lg-6 col-sm-12 col-xs-12">
+          <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/angular/assets/img/carrie.owerko.background.jpg" class="img-fluid info-img" alt="Yoga">
+        </div>
+        <div class="col-lg-6 col-sm-12 col-xs-12">
+          <div class="card info-card">
+            <div class="card-body info-card-body">
+              <h4 class="card-title">A valuable tool for therapists, teachers, practitioners, and physicians.</h4>
+              <p class="card-text">Click on a <strong>condition</strong>, or many conditions: see poses that are harmful, poses that are safe, and poses that are helpful <br /><br />
+                                   Click on a <strong>pose:</strong> see who shouldn't do it, who can do it, who <u>should</u> do it <br /> <br />
+                                  <br /><br />Revolutionize your teaching and personal practice with this simple tool for aligning the direction of your Yoga with the state of your body</p>
+              <a class="btn btn-info-card btn-generic" routerLink="/how-it-works">How it works</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="benefits-section container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <h1 style="text-align: left; font-weight: bold;">
+            <span style="color: #313131;">REAL </span><span style="color:#40E0D0; margin-left:10px;">BENEFITS</span>
+          </h1>
+          <h4 style="text-align:left;">Combined Yoga and Medical wisdom</h4>
+          <div style="box-shadow: 15px 20px #40E0D0;">
+            <img class="img-fluid" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/angular/assets/img/Demo5.jpg">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <br /><br /><br />
+          <h4 class="benefits-header" style="color: #40E0D0; text-align:left; font-weight: bold;">PRACTICE SAFER YOGA</h4>
+          <p class="benefits-text" style="text-align: left; margin-bottom:5px;">If you have medical issues, check out the conditions’ Unsafe poses to be sure you’re not endangering your health. Use yoga to improve your health by just clicking on “Beneficial poses” for the same conditions.</p>
+          <hr >
+          <h4 class="benefits-header" style="color:#40E0D0; text-align: left; font-weight: bold;">DESIGN CLASSES</h4>
+          <p class="benefits-text" style="text-align: left; margin-bottom:5px;">Put in an entire class’s medical conditions and see all the poses compatible with all the conditions in an instant. Then see which poses are helpful for which conditions. </p>
+          <hr >
+          <h4 class="benefits-header" style="color:#40E0D0; text-align: left; font-weight: bold;">FOCUS INDIVIDUAL SESSIONS</h4>
+          <p class="benefits-text" style="text-align: left; margin-bottom:5px;">Find all the poses that will help your or your client’s conditions by clicking on the conditions and checking ‘Beneficial Poses’—design your practice accordingly.</p>
+          <hr >
+        </div>
+      </div>
+    </div>
+
+    <div class="experts-section container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h1 style="font-weight: bold;"><span style="color: #313131;">MEET YOUR </span><span style="color:#40E0D0;">EXPERTS</span></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p>Yoga injury prevention is backed by over 130 years of collective experience.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 experts-background">
+          <div class="row justify-content-center">
+
+          <div class="col-xl-3 col-md-6 col-xs-12 expert">
+            <div class="col-12">
+            <div class="row">
+              <div class="col-6">
+                <img class="img-fluid" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/angular/assets/img/LOREN.png">
+              </div>
+              <div class="col-6">
+                <h1 style="font-weight: bold; text-align: left; padding-top:30px;" class="text-wrap">Loren <span style="font-size: .7em;">Fishman, MD</span></h1>
+                <h4 style="color: #414042; text-align: left;">FOUNDER</h4>
+              </div>
+            </div>
+            <div class="row" style="padding-top:25px;">
+              <div class="col-12">
+                <p class="expert-about">Physician and Daily Yoga Practitioner for 40+ years.</p>
+                <p class="expert-about">Asst. Clin. Prof. Columbia University Medical School</p>
+                <p class="expert-about">Three Years in India, one with Mr. Iyengar</p>
+                <p class="expert-about">Associate Editor “Topics in Geriatric Rehabilitation.”</p>
+                <p class="expert-about">11 Books and 97 Publications</p>
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-end">
+                <ul>
+                  <li style="display: inline-block; padding-right: 20px;">
+                    <a href="https://facebook.com/LorenFishmanMD">
+                      <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/facebook.png" style="height:35px; width:35px;">
+                    </a>
+                  </li>
+                  <li style="display: inline-block; padding-right: 20px;">
+                    <a href="https://twitter.com/LorenFishmanMD/status/1021431245241188353">
+                      <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/twitter.png" style="height:35px; width:35px;">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="col-xl-3 col-md-6 col-xs-12 expert">
+            <div class="col-12">
+            <div class="row">
+              <div class="col-6">
+                <img class="img-fluid" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/angular/assets/img/VICTOR.png">
+              </div>
+              <div class="col-6">
+                <h1 style="font-weight: bold; text-align: left; padding-top:30px;" class="text-wrap">Victor <span style="font-size: .7em; word-wrap:break-word;">Oppenheimer</span></h1>
+                <h4 style="color: #414042; text-align: left;">CO-FOUNDER</h4>
+              </div>
+            </div>
+            <div class="row" style="padding-top:25px;">
+              <div class="col-12">
+                <p class="expert-about">Certified to teach Iyengar style of yoga by BKS Iyengar</p>
+                <p class="expert-about">Attended yoga intensives with Mr. Iyengar in India on alternate years for 20+ years</p>
+                <p class="expert-about">Yoga teacher and practitioner for 40+ years</p>
+                <p class="expert-about">Taught Computer Science at the Harvard Grad School of Education</p>
+                <p class="expert-about">Creator of Yoga.com</p>
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-end">
+                <ul>
+                  <li style="display: inline-block; padding-right: 20px;">
+                    <a href="#">
+                      <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/facebook.png" style="height:35px; width:35px;">
+                    </a>
+                  </li>
+                  <li style="display: inline-block; padding-right: 20px;">
+                    <a href="#">
+                      <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/twitter.png" style="height:35px; width:35px;">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="col-xl-3 col-md-6 col-xs-12 expert">
+            <div class="col-12">
+            <div class="row">
+              <div class="col-6">
+                <img class="img-fluid" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/angular/assets/img/CARRIE.png">
+              </div>
+              <div class="col-6 text-wrap">
+                <h1 style="font-weight: bold; text-align: left; padding-top:30px;" class="text-wrap">Carrie <span style="font-size: .7em;">Owerko</span></h1>
+                <h4 style="color: #414042; text-align: left;">CO-FOUNDER</h4>
+              </div>
+            </div>
+            <div class="row" style="padding-top:25px;">
+              <div class="col-12">
+                <p class="expert-about">World-Renowned Yoga Teacher and Therapist</p>
+                <p class="expert-about">Senior Iyengar Teacher</p>
+                <p class="expert-about">Master Analyst of Postures and Kinetics in Many Styles</p>
+                <p class="expert-about">Major Creative Force in Contemporary Yoga</p>
+                <p class="expert-about">Global Experience in Leadership and Teaching</p>
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex justify-content-end">
+                <ul>
+                  <li style="display: inline-block; padding-right: 20px;">
+                    <a href="https://facebook.com/carrieowerkoyoga">
+                      <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/facebook.png" style="height:35px; width:35px;">
+                    </a>
+                  </li>
+                  <li style="display: inline-block; padding-right: 20px;">
+                    <a href="https://twitter.com/carrieowerko">
+                      <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/twitter.png" style="height:35px; width:35px;">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <app-join-form></app-join-form>
+    <app-footer></app-footer>
+</div>
+

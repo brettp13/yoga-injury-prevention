@@ -1,0 +1,82 @@
+<div class="header">
+    <h1>TALK TO A HUMAN.</h1>
+</div>
+<div class="container">
+    <div class="row content-row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="container">
+                <form [formGroup]="contactForm"
+                      (ngSubmit)="onSubmit()"
+                      class="contact-form">
+
+                    <div class="form-group">
+                        <input class="form-control form-control-lg"
+                               type="text"
+                               placeholder="Full name *"
+                               formControlName="fullName"
+                               required>
+
+                        <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+                             class="alert alert-danger">
+                          <span *ngIf="fullName.errors.required">Please enter your name</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-lg"
+                               type="email"
+                               placeholder="Email *"
+                               formControlName="email"
+                               required>
+
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                             class="alert alert-danger">
+                          <span *ngIf="email.errors.required">Please enter your email</span>
+                          <span *ngIf="email.errors.email">Please enter a valid email</span>    
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control form-control-lg"
+                                  placeholder="Message *"
+                                  rows="5"
+                                  formControlName="message"
+                                  required
+                        ></textarea>
+
+                        <div *ngIf="message.invalid && (message.dirty || message.touched)"
+                             class="alert alert-danger">
+                          <span *ngIf="message.errors.required">Please enter a message</span>    
+                        </div>
+                    </div>
+                    <div *ngIf="contactSuccess" class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="alert alert-success">
+                                <p>Thanks for reaching out to us</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button [disabled]="!contactForm.valid"
+                            type="submit" 
+                            class="btn btn-generic btn-send">Send</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="container get-in-touch">
+                <h1>GET IN TOUCH <span style="color:#40E0D0;">WITH US</span></h1>
+                <p>For comments, questions, criticism, or suggestions, please write to:</p>
+                <div class="container email">
+                    <h5><i class="fa fa-envelope"></i> info@yip.guru</h5>
+                </div>
+                <p>We are always interested in new poses, new conditions, and better pictures, so please let us know.</p>
+            </div>
+            <div class="container social">
+                <h1>REACH US <span style="color:#40E0D0;">REACH US ON SOCIAL</span></h1>
+                <ul class="social-list">
+                    <li><i class="fa fa-2x fa-facebook"></i> <a href="https://www.facebook.com/YIP.guru/">facebook.com/yip.guru</a></li>
+                    <li><i class="fa fa-2x fa-instagram"></i> <a href="https://instagram.com/yoga_injury_prevention">instagram.com/yoga_injury_prevention</a></li>
+                    <li><i class="fa fa-2x fa-twitter"></i> <a href="https://twitter.com/LorenFishmanMD/status/1021431245241188353">twitter.com/yip_guru</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

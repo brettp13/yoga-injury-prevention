@@ -1,0 +1,76 @@
+.content {
+    margin-top: 5%;
+    margin-bottom: 200px;
+}
+.searchedCondition {
+    font-style: italic;
+    color: #00aeef;
+}
+.searchedCondition:hover {
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.searchedConditions {
+    list-style-type: none;
+}
+.nav-tabs {
+    margin-bottom: 35px;
+    margin-top: 50px;
+}
+.viewControl {
+    margin-bottom: -10px;
+}
+.underline {
+    margin-bottom: 20px;
+}
+.activated {
+    font-style: italic;
+}
+.card {
+    margin: 15px;
+}
+.sanskrit-name {
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+}
+.english-name {
+    text-align: left;
+    color: grey;
+    font-size: 12px;
+}
+.workarounds {
+    text-align: left;
+    color: #00aeef;
+    font-size: 10px;
+}
+.workarounds:hover {
+    font-size: 12px;
+    cursor:pointer;
+}
+.poseInfo {
+    text-align: left;
+    color: #00aeef;
+    font-size: 10px;
+}
+.poseInfo:hover {
+    font-size: 12px;
+    cursor: pointer;
+}
+.poseType {
+    font-style: italic;
+    color: #00aeef;
+}
+.backToSearch:hover {
+    font-size: 1.4em;
+    cursor: pointer;
+}
+.video {
+    text-align: left;
+    color: #00aeef;
+    font-size: 10px;
+}
+.video:hover {
+    font-size: 12px;
+    cursor: pointer;
+}

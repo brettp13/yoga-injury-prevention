@@ -1,0 +1,48 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Yoga Injury Prevention</title>
+        <base href="/">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- Custom fonts -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+        <!-- Stripe library -->
+        <script src="https://js.stripe.com/v3/"></script>
+  
+        <script type="text/javascript">
+          //var stripe = Stripe('pk_test_cfE9dndAoZGRxcXreTUBWdVJ'); // use your test publishable key
+          var stripe = Stripe('pk_live_m4Gdciog99LDC4icu4GM6u36');
+          var elements = stripe.elements();
+        </script>
+
+        <script type="text/javascript">
+            // Who sent the traffic
+            var trafficSource = '{{traffic_source}}';
+        </script>
+    </head>
+    <body>
+        <app-root></app-root>
+
+        <script type="module" src="{% static 'angular/runtime-es2015.js' %}"></script>
+        <script src="{% static 'angular/runtime-es5.js' %}" nomodule defer></script>
+
+        <script type="module" src="{% static 'angular/polyfills-es2015.js' %}"></script>
+        <script src="{% static 'angular/polyfills-es5.js' %}" nomodule defer></script>
+
+        <script type="module" src="{% static 'angular/styles-es2015.js' %}"></script>
+        <script src="{% static 'angular/styles-es5.js' %}" nomodule defer></script>
+
+        <script src="{% static 'angular/scripts.js' %}" defer></script>
+
+        <script type="module" src="{% static 'angular/vendor-es2015.js' %}"></script>
+        <script src="{% static 'angular/vendor-es5.js' %}" nomodule defer></script>
+
+        <script type="module" src="{% static 'angular/main-es2015.js' %}"></script>
+        <script src="{% static 'angular/main-es5.js' %}" nomodule defer></script>
+    </body>
+</html>

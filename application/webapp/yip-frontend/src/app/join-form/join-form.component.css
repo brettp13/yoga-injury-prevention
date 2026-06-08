@@ -1,0 +1,63 @@
+.join-section {
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+
+.join-section h4 {
+    margin-bottom: 50px;
+}
+
+.join-section input {
+    background-color: #E0E0E0;
+}
+
+.join-section button {
+    margin-top: 20px;
+    background-color: #40E0D0;
+    color: #fff;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 20px;
+    background-color: #40E0D0;
+    color: #fff;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.join-section button:hover {
+    background-color: #40E0D0;
+}
+
+.btn-prev {
+    margin-right: 50px;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.payment-disclaimer {
+    background-color: #ebebeb;
+    border-radius: 7px;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 50px;
+}
+
+.payment-disclaimer p {
+    margin-left: 50px;
+}
+
+.payment-disclaimer hr {
+    border-top: 1px solid #fff;
+    width: 80%;
+}

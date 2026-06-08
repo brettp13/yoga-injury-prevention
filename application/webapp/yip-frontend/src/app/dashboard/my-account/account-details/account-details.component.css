@@ -1,0 +1,45 @@
+.backdrop {
+    background-image: url("https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/VECTOR_BG.png");
+    padding-top: 150px;
+}
+.white-back {
+    background-color: #fff;
+    padding: 75px;
+}
+.changePassword {
+    float: left;
+    font-weight: bold;
+    color: blue;
+}
+.btn-save-changes {
+    float: left;
+}
+@media(max-width: 992px) {
+    .btn-save-changes {
+        margin-bottom: 50px;
+    }
+}
+.text-container {
+    margin-left: 50px;
+}
+form label {
+    float: left;
+}
+p {
+    text-align: left;
+}
+img {
+    float: left;
+}
+.cancel {
+    color: red;
+    font-weight: bold;
+}
+@media(max-width: 992px) {
+    .cancel {
+        margin-top: 30px;
+    }
+}
+.cancel:hover {
+    cursor: pointer;
+}

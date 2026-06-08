@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 salutations">
+        <h1>Welcome</h1>
+        <h4>{{userProfile.first_name | titlecase}} {{userProfile.last_name | titlecase}}</h4>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 tagline">
+        <h5>90+ Poses and their contraindications at your fingertips</h5>
+      </div>
+    </div>
+    <div class="selectSection">
+      <div class="row justify-content-center">
+        <div class="col-xl-3 col-md-5 col-sm-12">
+          <a routerLink="search-by-pose">
+            <div class="selection">
+              <img class="img-fluid icon" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/icons/Browse-poses.png">
+              <h3>Browse Poses</h3>
+              <p>Contraindications and Benefits of each Pose</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-xl-3 col-md-5 col-sm-12">
+          <a routerLink="search-by-condition">
+            <div class="selection">
+              <img class="img-fluid icon" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/icons/Browse-conditions.png">
+              <h3>Browse Conditions</h3>
+              <p>Select Medical Condition(s) to see Contraindications for the set. Also Workarounds and Videos</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-xl-3 col-md-5 col-sm-12">
+          <a routerLink="search-by-pose">
+            <div class="selection">
+              <img class="img-fluid icon" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/icons/Pose-glossary.png">
+              <h3>Yoga Pose Glossary</h3>
+              <p>How-to, Contraindications, Benefits</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-xl-3 col-md-5 col-sm-12">
+          <a routerLink="medical-glossary">
+            <div class="selection">
+              <img class="img-fluid icon" src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/icons/Med-glossary.png">
+              <h3>Medical Glossary</h3>
+              <p>Explanations, Contraindications, Benefits and References for each condition</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="faqCallToAction">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <h2>NEED SOMETHING ANSWERED?</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <h4>Check out our FAQ below for answers to our most common questions</h4>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <button routerLink="/faq" class="btn btn-faq">BROWSE FAQ</button>
+        </div>
+      </div>
+    </div>
+  </div>

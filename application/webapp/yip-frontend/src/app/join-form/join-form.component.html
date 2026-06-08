@@ -1,0 +1,204 @@
+<div class="join-section container-fluid">
+    <div class="row justify-content-center">
+      <div class="col">
+        <h2 style="font-weight: bold;">JOIN TODAY! YOUR FIRST WEEK IS <span style="color: #40E0D0;">FREE</span></h2>
+        <h4 style="font-style: italic;">*Then just $4.33 a month</h4>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col">
+        <h4 *ngIf="currentStep !=4">We just need a little info from you before you power up your practice.</h4> 
+        <h4 *ngIf="currentStep === 4">We won't charge your card for <span style="color: #40E0D0; font-weight: bold;">seven</span> days</h4>
+      </div>
+    </div>
+    <form [formGroup]="signUpForm"
+          (ngSubmit)="onSubmit()"
+          id="payment-form">
+
+      <div class="row justify-content-center">
+
+        <!-- Step one in the signup process-->
+        <div *ngIf="currentStep === 0">
+          <div class="col-lg-12">
+            <div class="form-row">
+              <div class="form-group col-6">
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="First Name"
+                       formControlName="firstName"
+                       required>
+              
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                     class="alert alert-danger">
+                  <span *ngIf="firstName.errors.required">Please enter your first name</span>    
+                </div>
+
+              </div>
+              <div class="form-group col-6">
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="Last Name"
+                       formControlName="lastName"
+                       required>
+
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                     class="alert alert-danger">
+                  <span *ngIf="lastName.errors.required">Please enter your last name</span>  
+                </div>
+              
+              </div>
+            </div>
+        
+            <div class="form-group">
+              <input type="email" 
+                     class="form-control" 
+                     placeholder="Email Address"
+                     formControlName="email"
+                     required>
+            
+              <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                   class="alert alert-danger">
+                <span *ngIf="email.errors.required">Please enter your email</span>    
+                <span *ngIf="email.errors.email">Please enter a valid email</span>
+                <span *ngIf="email.errors.emailIsTaken">This email is already associated with another account</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form controls-->
+          <div class="row justify-content-center">
+            <a [class.disabled]="firstName.invalid || lastName.invalid || email.invalid" 
+               (click)="changeForm('next')" 
+               class="btn btn-generic btn-next">Get my free week</a>
+          </div>
+        </div>
+        <!-- End step one -->
+
+        <!-- Step two in the signup process -->
+        <div *ngIf="currentStep === 1">
+          <div class="col-lg-12">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="checkbox" 
+                       class="form-check-input" 
+                       id="isTeacher"
+                       value="isTeacher"
+                       formControlName="isTeacher">
+                <label class="form-check-label" for="isTeacher">I am a Yoga instructor</label>
+              </div>
+            </div>
+          </div>
+          <!-- Form controls -->
+          <div class="row justify-content-center">
+            <a (click)="changeForm('prev')" 
+               class="btn btn-generic btn-prev">Back</a>
+
+            <a (click)="changeForm('next')"
+               class="btn btn-generic btn-next">Next</a>
+          </div>
+        </div>
+        <!-- End step two-->
+
+        <!-- Step three in the signup process -->
+        <div *ngIf="currentStep === 2">
+          <div class="col-lg-12">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="yoga-style"><strong>Yoga style</strong></label>
+                <select class="form-control" 
+                        id="yoga-style" 
+                        formControlName="yogaStyle"
+                        [(ngModel)]=defaultOption>
+                    <option [value]=null>Select a style</option>
+                    <option *ngFor="let yogaStyle of yogaStyles"
+                            value="{{yogaStyle.id}}">{{yogaStyle.title}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form controls -->
+          <div class="row justify-content-center">
+            <a (click)="changeForm('prev')" 
+               class="btn btn-generic btn-prev">Back</a>
+
+            <a (click)="changeForm('next')"
+               class="btn btn-generic btn-next">Next</a>
+          </div>
+
+        </div>
+        <!-- End step three -->
+
+        <!-- Step four in the signup process -->
+        <div *ngIf="currentStep === 3">
+            <div class="form-group">
+              <input type="password"
+                     class="form-control"
+                     placeholder="Enter password"
+                     formControlName="password"
+                     required>
+
+              <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                   class="alert alert-danger">
+                   <span *ngIf="password.errors.required">Please enter a password</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="password"
+                     class="form-control"
+                     placeholder="Repeat password"
+                     formControlName="verifyPassword"
+                     required>
+
+              <div *ngIf="verifyPassword.invalid && (verifyPassword.dirty || verifyPassword.touched)"
+                   class="alert alert-danger">
+                   <span *ngIf="verifyPassword.errors.required">Please verify your password</span>
+                   <span *ngIf="verifyPassword.errors.passwordsMustMatch">The password you've entered does not match</span>
+              </div>
+            </div>
+
+            <!-- Form controls -->
+            <div class="row justify-content-center">
+              <a (click)="changeForm('prev')"
+                 class="btn btn-generic btn-prev">Back</a>
+
+              <a (click)="changeForm('next')"
+                 class="btn btn-generic btn-next"
+                 [class.disabled]="password.invalid || verifyPassword.invalid">Next</a>
+            </div>
+        </div>
+        <!-- End step four -->
+
+        <!-- Step five in the signup process -->
+        <div *ngIf="currentStep === 4" class="col-lg-3 col-md-6 col-sm-10">
+          <div class="payment-disclaimer">
+            <p>1x monthly subscription</p>
+            <hr>
+            <p>Total:    $4.33</p>
+          </div>
+          <div class="form-row flex-column">
+          <div class="form-group">
+                <label for="cardElement">Credit or debit card number</label>
+                <div id="cardElement" #cardElement></div>
+                <div id="card-errors" 
+                     class="alert alert-danger"
+                     role="alert" 
+                     *ngIf="error">{{ error }}</div>
+            </div>
+          </div>
+          
+          <!-- Checkout -->
+          <button [disabled]="!signUpForm.valid"
+                  type="submit"
+                  class="btn btn-generic btn-join">Get My Free Week</button>
+        </div>
+        <!-- End step five -->
+
+        <div *ngIf="signUpFormErrorMessage.length > 0" class="alert alert-danger">
+          {{signUpFormErrorMessage[0]}}
+        </div>
+
+      </div>
+    </form>
+</div>

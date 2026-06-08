@@ -1,0 +1,48 @@
+.conditionDisplay {
+    font-weight: bold;
+    color: #2F97BE;
+}
+.conditionDisplay:hover {
+    cursor: pointer;
+}
+.poseDisplay {
+    margin-top: 200px;
+}
+.pose {
+    text-align: left;
+    margin-left: 150px;
+}
+@media (max-width: 992px) {
+    .pose {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+.poseImg {
+    margin-right: 100px;
+}
+.conditionsHeader {
+    font-weight: bold;
+}
+.poseInfo {
+    text-align: left;
+}
+.displayPoseInfoCallToAction {
+    background-color: #40E0D0;
+    text-align: center;
+    color: #fff;
+    margin-top: 35px;
+    font-weight: bold;
+    padding-left: 45px;
+    padding-right: 45px;
+    border-radius: 50px;
+}
+@media (max-width: 992px) {
+    .displayPoseInfoCallToAction {
+        margin-bottom: 25px;
+    }
+}
+.aboutPoseHeader {
+    font-weight: bold;
+    color: #2F97BE;
+}

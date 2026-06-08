@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row justify-content-center no-gutters">
+        <div class="col-12">
+            <h4>Search Results</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center no-gutters">
+        <div class="col-12">
+            <p>Conditions searched:</p>
+            <ul>
+                <li *ngFor="let condition of searchResults.conditions_searched">
+                    <p class="searchedCondition" (click)="viewCondition(condition.id)">{{condition.name}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- display beneficial pose results-->
+    <div *ngIf="searchResults.search_type==='beneficial_poses'"
+         class="row justify-content-center no-gutters displayPoses">
+        <div *ngFor="let result of searchResults.beneficial_poses"
+             class="col-4">
+            <div (click)="viewPose(result.id)"
+                 class="card result">
+                <img class="card-img-top img-fluid" src="{{result.image}}" alt="{{result.english_name}} {{result.sanskrit_name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{result.sanskrit_name}}</h5>
+                    <h5 class="card-title">{{result.english_name}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- display safe pose results -->
+    <div *ngIf="searchResults.search_type==='safe poses'"
+         class="row justify-content-center no-gutters displayPoses">
+        <div *ngFor="let result of searchResults.safe_poses"
+             class="col-4">
+            <div (click)="viewPose(result.id)"
+                 class="card result">
+                <img class="card-img-top img-fluid" src="{{result.image}}" alt="{{result.english_name}} {{result.sanskrit_name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{result.sanskrit_name}}</h5>
+                    <h5 class="card-title">{{result.english_name}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- display unsafe pose results-->
+    <div *ngIf="searchResults.search_type==='contraindicated poses'"
+         class="row justify-content-center no-gutters displayPoses">
+        <div *ngFor="let result of searchResults.contraindicated_poses"
+             class="col-4">
+            <div (click)="viewPose(result.id)"
+                 class="card result">
+                <img class="card-img-top img-fluid" src="{{result.image}}" alt="{{result.english_name}} {{result.sanskrit_name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{result.sanskrit_name}}</h5>
+                    <h5 class="card-title">{{result.english_name}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button (click)="returnToSearchByPose()"
+                    class="btn btn-primary">Return to search</button>
+        </div>
+    </div>
+</div>

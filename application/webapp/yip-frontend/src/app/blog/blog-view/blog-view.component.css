@@ -1,0 +1,14 @@
+.blog-post {
+    text-align: left;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+}
+.blog-title {
+    padding-top: 100px;
+}
+.authorImage {
+    width: 75px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

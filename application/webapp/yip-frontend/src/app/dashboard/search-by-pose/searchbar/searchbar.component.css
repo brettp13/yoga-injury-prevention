@@ -1,0 +1,64 @@
+.content {
+    margin-bottom: 200px;
+}
+ul {
+    list-style: none;
+}
+li {
+    display: inline-block;
+}
+.btn-view-all {
+    color: #fff;
+    background-color: #40E0D0;
+    border-radius: 25px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-left: 20px;
+}
+.btn-search {
+    color: #fff;
+    background-color: #40E0D0;
+    border-radius: 25px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+.btn-clear {
+    background-color: #fff;
+    color: #414042;
+    border: solid 2px #414042;
+    border-radius: 25px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-left: 20px;
+}
+.row {
+    margin-top: 40px;
+}
+.displayPoses {
+    margin-top: 75px;
+}
+.card {
+    margin: 20px;
+}
+.card:hover {
+    border: solid 2px #7FFF00;
+    cursor: pointer;
+}
+.table thead th {
+    color: #40E0D0;
+}
+.table tbody tr:hover {
+    cursor: pointer;
+}
+.displayToggleText {
+    margin-left: 20px;
+}

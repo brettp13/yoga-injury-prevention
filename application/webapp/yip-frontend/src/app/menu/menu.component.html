@@ -1,0 +1,148 @@
+<nav *ngIf="!userSignedIn"
+     class="navbar navbar-expand-lg menu fixed-top">
+  <a class="navbar-brand menu-item" 
+     routerLink="/"
+     data-toggle="collapse"
+     data-target=".navbar-collapse.show">
+    <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/angular/assets/img/yip.menu.logo.png" style="max-height:60px;">
+  </a>
+  <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-toggle="collapse" 
+      data-target="#navbarContent" 
+      aria-controls="navbarContent" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+  >
+    <i class="fa fa-bars fa-3x" style="color: #000;"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           routerLink="/how-it-works"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">How it works</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item"
+           routerLink="/blog"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           routerLink="/faq"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">FAQ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item"
+           routerLink="/contact"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           data-toggle="modal" 
+           data-target="#loginModal"
+           (click)="openModal()">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" 
+           routerLink="/join-yip"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show"><span class="badge badge-pill badge-call-to-action menu-item">Free Trial</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Login to YIP</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModal (click)="exitModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+        <app-signin-form></app-signin-form>
+      
+    </div>
+  </div>
+</div>
+
+<nav *ngIf="userSignedIn"
+     class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <a class="navbar-brand menu-item" routerLink="/dashboard">
+    <img src="https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/angular/assets/img/yip.menu.logo.png" style="max-height:60px;">
+  </a>
+  <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-toggle="collapse" 
+      data-target="#navbarContent" 
+      aria-controls="navbarContent" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+  >
+    <i class="fa fa-bars fa-3x" style="color: #000;"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           routerLink="/dashboard"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           [routerLink]="['/dashboard', 'search-by-condition']"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">Search Conditions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           [routerLink]="['/dashboard', 'search-by-pose']"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">Search Poses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           [routerLink]="['/dashboard', 'my-account']"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">My Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           routerLink="/blog"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           routerLink="/faq"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">FAQ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           routerLink="/contact"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-item" 
+           (click)="logOut()"
+           data-toggle="collapse"
+           data-target=".navbar-collapse.show">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

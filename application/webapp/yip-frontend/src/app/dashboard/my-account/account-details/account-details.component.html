@@ -1,0 +1,102 @@
+<div class="container-fluid backdrop">
+    <div class="row justify-content-center no-gutters">
+        <div class="col-lg-8 col-sm-12">
+            <div class="white-back">
+            <div class="row justify-content-center">
+                
+                <div class="col-lg-6 col-sm-10">
+                    <form [formGroup]="accountDetailsForm">
+                        <div class="form-group">
+                            <label for="firstName">First name</label>
+                            <input type="text" id="firstName" class="form-control" [placeholder]="userProfile.first_name" formControlName="firstName">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last name</label>
+                            <input type="text" id="lastName" class="form-control" [placeholder]="userProfile.last_name" formControlName="lastName">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" [placeholder]="userAuthInfo.email" formControlName="email">
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                                 class="alert alert-danger">
+                                 <span *ngIf="email.errors.email">Please enter a valid email</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <a class="changePassword"
+                               data-toggle="modal"
+                               data-target="#changePasswordModal">Change password</a>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-group">
+                            <label for="yoga-style"><strong>Yoga Style</strong></label>
+                            <select class="form-control" 
+                                    id="yoga-style" 
+                                    formControlName="yoga-style"
+                                    [(ngModel)]=defaultOption>
+                                <option [value]="userProfile.yoga_style">{{userProfile.yoga_style}}</option>
+                                <option *ngFor="let yogaStyle of yogaStyles"
+                                        value="{{yogaStyle.id}}">{{yogaStyle.title}}</option>
+                                </select>
+                        </div>
+                        <br />
+                        <button [disabled]="!accountDetailsForm.valid"
+                                class="btn btn-primary btn-save-changes"
+                                (click)="onSubmit()">Save changes</button>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-sm-10">
+                    <div class="text-container">
+                        <p>Your subscription started {{userProfile.created | date}}</p>
+                        <p class="cancel" data-toggle="modal" data-target="#cancelAccountModal">Cancel subscription</p>
+                        <br />
+                        <p>Disclaimer: We use Stripe as our designated payment gateway. Stripe is one of the world's largest payment operators, with millions of businesses using the API to accept payments every day.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+<br />
+<br />
+<div *ngIf="showAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Info updated</h4>
+    <p style="text-align: center;">Your account has been updated with your new information</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+</div>
+
+<!-- Change password modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModal" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Change password</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <app-change-password></app-change-password>
+        </div>
+    </div>
+</div>
+
+<!-- Are you sure you want to cancel modal -->
+<div class="modal fade" id="cancelAccountModal" tabindex="-1" role="dialog" aria-labelledby="cancelAccountModal" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Cancel Account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <app-cancel-account></app-cancel-account>
+        </div>
+    </div>
+</div>

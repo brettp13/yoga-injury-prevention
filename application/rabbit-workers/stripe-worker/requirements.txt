@@ -1,0 +1,3 @@
+pika
+stripe
+psycopg2-binary

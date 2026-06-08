@@ -1,0 +1,13 @@
+.displayPoses {
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+.result:hover {
+    cursor: pointer;
+}
+.container {
+    margin-bottom: 100px;
+}
+.searchedCondition:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{title}} | {{ site_title | default:_('Yoga Injury Prevention Administration') }}{% endblock %}
+
+{% block extrastyle %}
+<style>
+#header {
+    background-color: #058bcc;
+}
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Yoga Injury Prevention Administration</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

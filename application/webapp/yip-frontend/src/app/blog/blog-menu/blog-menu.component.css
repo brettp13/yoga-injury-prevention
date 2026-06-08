@@ -1,0 +1,13 @@
+.custom-nav {
+    background-color: #ebebeb;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+.custom-nav a {
+    color: #4c4c4c;
+}
+
+.custom-nav a:hover {
+    cursor: default;
+}

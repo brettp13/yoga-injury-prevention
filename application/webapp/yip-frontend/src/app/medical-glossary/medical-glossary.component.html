@@ -1,0 +1,31 @@
+<div class="content container-fluid">
+    <div class="row headerRow">
+        <div class="col-sm-12">
+            <h1>Medical Glossary</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div *ngFor="let condition of conditionList">
+                <div class="row conditionRow justify-content-center">
+                    <div class="col-10">
+                        <div class="card">
+                            <div class="row card-body align-items-center">
+                                <img *ngIf="condition.image_one"
+                                     class="col-sm-6" 
+                                     src="{{ condition.image_one }}" alt="{{ condition.name }} Image"/>
+                                <div class="col-sm-6">
+                                    <h5 class="card-title">{{condition.name}}</h5>
+                                    <br />
+                                    <a (click)="viewCondition(condition.id)" 
+                                       class="btn btn-primary"
+                                       style="color:#fff;">View Condition</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

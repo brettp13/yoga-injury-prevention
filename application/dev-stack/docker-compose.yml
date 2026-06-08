@@ -1,0 +1,192 @@
+version: "3"
+services:
+    webapp:
+        container_name: webapp
+        restart: always
+        build:
+            context: ../webapp
+        volumes:
+            - yip_data_volume:/yip/yip/static/img
+        expose:
+            - "8000"
+            - "8001"
+        environment:
+            - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+            - EMAIL_HOST=${EMAIL_HOST}
+            - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+            - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+            - EMAIL_PORT=${EMAIL_PORT}
+            - EMAIL_USE_TLS=${EMAIL_USE_TLS}
+            - DATABASE_ENGINE=${DATABASE_ENGINE}
+            - DATABASE_NAME=${DATABASE_NAME}
+            - DATABASE_USER=${DATABASE_USER}
+            - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+            - DATABASE_HOST=${DATABASE_HOST}
+            - DATABASE_PORT=${DATABASE_PORT}
+            - ADMIN_USER=${ADMIN_USER}
+            - ADMIN_USER_EMAIL=${ADMIN_USER_EMAIL}
+            - ADMIN_USER_PASSWORD=${ADMIN_USER_PASSWORD}
+            - ENV=${ENV}
+            - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+            - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+            - AWS_STORAGE_BUCKET_NAME=${AWS_STORAGE_BUCKET_NAME}
+        depends_on:
+            - "postgresql"
+        command: [ "/opt/bin/build.sh" ]
+
+    postgresql:
+        container_name: postgresql
+        restart: always
+        build:
+            context: ../postgresql
+        volumes:
+            - pg_data_volume:/var/lib/postgresql/data
+        expose:
+            - "5432"
+        environment:
+            - POSTGRES_DB=${DATABASE_NAME}
+            - POSTGRES_USER=${DATABASE_USER}
+            - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+
+    nginx:
+        container_name: nginx
+        restart: always
+        build:
+            context: ../nginx
+            args:
+                ENV: dev
+        ports:
+            - "80:80"
+        depends_on:
+            - "webapp"
+        command: /usr/sbin/nginx
+        labels:
+            - "co.elastic.logs/module=nginx"
+
+    elasticsearch:
+        container_name: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+        restart: on-failure
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - es_data_volume:/usr/share/elasticsearch/data
+        expose:
+            - "9200"
+            - "9300"
+        environment:
+            - node.name=elasticsearch
+            - cluster.name=yip
+            - bootstrap.memory_lock=true
+            - http.cors.enabled=true
+            - http.cors.allow-origin=*
+            - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+            - discovery.type=single-node
+            - xpack.ml.enabled=false
+        labels:
+            - "co.elastic.logs/enabled=false"
+
+    logstash:
+        container_name: logstash
+        image: docker.elastic.co/logstash/logstash:7.6.0
+        volumes:
+            - "./volumes/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml"
+            - "./volumes/logstash/nginx-webapp-pipeline.conf:/usr/share/logstash/pipelines/nginx-webapp-pipeline.conf"
+        expose:
+            - "5045"
+        depends_on:
+            - elasticsearch
+        labels:
+            - "co.elastic.logs/enabled=false"
+
+
+    filebeat:
+        container_name: filebeat
+        restart: always
+        image: docker.elastic.co/beats/filebeat:7.6.0
+        user: root
+        volumes:
+            - "./volumes/filebeat/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - "/var/lib/docker/containers/:/var/lib/docker/containers/:ro"
+            - "/var/log/:/var/log/:ro"
+        command:
+            - "-e"
+            - "--strict.perms=false"
+        labels:
+            - "co.elastic.logs/enabled=false"
+
+    kibana:
+        container_name: kibana
+        image: docker.elastic.co/kibana/kibana:7.6.0
+        expose:
+            - "5601"
+        depends_on:
+            - elasticsearch
+        environment:
+            - SERVER_NAME=kibana.yip
+            - SERVER_BASEPATH=/kibana
+            - ELASTICSEARCH_URL=http://elasticsearch:9200
+        labels:
+            - "co.elastic.logs/enabled=false"
+
+    rabbitmq:
+        container_name: rabbitmq
+        build:
+            context: ../rabbitmq
+        restart: on-failure
+        expose:
+            - "5672"
+            - "15672"
+        labels:
+            - "co.elastic.logs/enabled=false"
+
+    email_worker:
+        container_name: email_worker
+        build: ../rabbit-workers/email-worker
+        restart: on-failure
+        depends_on:
+            - rabbitmq
+        environment:
+            - EMAIL_HOST=${EMAIL_HOST}
+            - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+            - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+            - EMAIL_HOST_PORT=${EMAIL_PORT}
+        command: ['python3', 'email_worker.py']
+
+    mailchimp_worker:
+        container_name: mailchimp_worker
+        build: ../rabbit-workers/mailchimp-worker
+        restart: on-failure
+        depends_on:
+            - rabbitmq
+        environment:
+            - MAILCHIMP_SUBSCRIBERS_ID=${MAILCHIMP_SUBSCRIBERS_ID}
+            - EX_MAILCHIMP_SUBSCRIBERS_ID=${EX_MAILCHIMP_SUBSCRIBERS_ID}
+            - MAILCHIMP_API_KEY=${MAILCHIMP_API_KEY}
+            - MAILCHIMP_API_USER=${MAILCHIMP_API_USER}
+        command: ['python3', 'mailchimp_worker.py']
+
+    stripe_worker:
+        container_name: stripe_worker
+        build: ../rabbit-workers/stripe-worker
+        restart: on-failure
+        depends_on: 
+            - rabbitmq
+        environment:
+            - TEST_STRIPE_SECRET=${TEST_STRIPE_SECRET}
+            - PROD_STRIPE_SECRET=${PROD_STRIPE_SECRET}
+            - DB_NAME=${DATABASE_NAME}
+            - DB_USER=${DATABASE_USER}
+            - DB_PASSWORD=${DATABASE_PASSWORD}
+        command: ['python3', 'stripe_worker.py']
+
+volumes:
+    yip_data_volume:
+        driver: local
+    pg_data_volume:
+        driver: local
+    es_data_volume:
+        driver: local

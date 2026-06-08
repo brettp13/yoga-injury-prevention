@@ -1,0 +1,3 @@
+- pipeline.id: webapp-and-nginx
+  path.config: "/usr/share/logstash/pipelines/nginx-webapp-pipeline.conf"
+

@@ -1,0 +1,11 @@
+<h2 class="blog-title">{{blogPost.title}}</h2>
+<img *ngIf="author.picture" src="{{ author.picture }}" 
+     alt="{{ author.first_name }} {{ author.last_name }}"
+     class="authorImage">
+<p class="blog-author">{{author.first_name}} {{author.last_name}}</p>
+<hr>
+<div [innerHtml]="blogPost.body | safeHtml"
+     class="blog-post"></div>
+
+<br />
+<br />

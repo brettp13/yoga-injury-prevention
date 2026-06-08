@@ -1,0 +1,63 @@
+<div class="content">
+    <div class="row justify-content-center no-gutters">
+        <div class="col-lg-6 col-sm-12">
+            <input type="text" 
+                   class="form-control" 
+                   placeholder="Search pose by name"
+                   [(ngModel)]="searchText"
+                   autofocus>
+        </div>
+    </div>
+    <div class="row justify-content-center no-gutters">
+        <div class="col-10">
+            <p *ngIf="searchResults < 75">Number of results: <strong>{{searchResults}}</strong></p>
+            <br />
+            <ul>
+                <li>
+                  <label class="switch">
+                    <input (click)="setListView()" type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </li>
+                <li>
+                  <p *ngIf="!isListView" class="displayToggleText">Click to display results in list view</p>
+                  <p *ngIf="isListView" class="displayToggleText">Click to display results in image view</p>
+                </li>
+                <br />
+                <br />
+            </ul>
+        </div>
+    </div>
+
+    <div class="displayPoses">
+        <div *ngIf="!isListView" class="row no-gutters">
+            <div *ngFor="let pose of poses | yogaPoseFilter:searchText" class="col-lg-4 col-sm-12">
+                <div (click)="viewPose(pose.id)" class="card">
+                    <img class="card-img-top img-fluid" src="{{ pose.image }}" alt="{{ pose.english_name }} {{ pose.sanskrit_name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pose.sanskrit_name }}</h5>
+                        <h5 class="card-title">{{ pose.english_name }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="isListView" class="row no-gutters justify-content-center">
+            <div class="col-lg-10 col-sm-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sanskrit Name</th>
+                            <th scope="col">English Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pose of poses | yogaPoseFilter:searchText" (click)="viewPose(pose.id)">
+                            <td>{{ pose.sanskrit_name }}</td>
+                            <td>{{ pose.english_name }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

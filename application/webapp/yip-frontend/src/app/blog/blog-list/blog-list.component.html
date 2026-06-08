@@ -1,0 +1,45 @@
+<div class="container">
+  <div *ngFor="let post of blogPosts; let i = index;">
+    <div *ngIf="i % 3 == 0" class="row blog-row justify-content-center">
+      <div *ngIf="i + 0 < blogPosts.length">
+        <div class="col-lg-4 col-sm-12">
+          <a (click)="selectBlogPost(blogPosts[i+0])">
+            <div class="card blog-link" style="width: 18rem;">
+              <img *ngIf="blogPosts[i+0].image" src="{{blogPosts[i+0].image}}" class="card-img-top" style="height: 215px;" alt="{{blogPosts[i+0].title}}">
+              <div class="card-body">
+                <h5 class="card-subtitle mb-2 text-muted">{{blogPosts[i+0].author_name}}</h5>
+                <h5 class="card-title">{{blogPosts[i+0].title}}</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="i + 1 < blogPosts.length">
+        <div class="col-lg-4 col-sm-12">
+          <a (click)="selectBlogPost(blogPosts[i+1])">
+            <div class="card blog-link" style="width: 18rem;">
+              <img *ngIf="blogPosts[i+1].image" src="{{blogPosts[i+1].image}}" class="card-img-top" style="height: 215px;" alt="{{blogPosts[i+1].title}}">
+              <div class="card-body">
+                <h5 class="card-subtitle mb-2 text-muted">{{blogPosts[i+1].author_name}}</h5>
+                <h5 class="card-title">{{blogPosts[i+1].title}}</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="i + 2 < blogPosts.length">
+        <div class="col-lg-4 col-sm-12">
+          <a (click)="selectBlogPost(blogPosts[i+2])">
+            <div class="card blog-link" style="width: 18rem;">
+              <img *ngIf="blogPosts[i+2].image" src="{{blogPosts[i+2].image}}" class="card-img-top" style="height: 215px;" alt="{{blogPosts[i+2].title}}">
+              <div class="card-body">
+                <h5 class="card-subtitle mb-2 text-muted">{{blogPosts[i+2].author_name}}</h5>
+                <h5 class="card-title">{{blogPosts[i+2].title}}</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

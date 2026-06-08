@@ -1,0 +1,74 @@
+.salutations {
+    padding-top: 75px;
+}
+.salutations h1 {
+    color: #000;
+    font-weight: bold;
+}
+.salutations h4 {
+    color: #40E0D0;
+}
+.tagline {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #414042;
+    font-family: 'Open Sans',serif;
+    font-weight: 16px;
+}
+.selectSection {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.selection {
+    background-color: #F0F0F0;
+    box-shadow: 15px 15px 10px #D0D0D0;
+    border-radius: 5px;
+    border: 1px solid #D0D0D0;
+    padding: 50px;
+    margin: 20px;
+}
+.selection a {
+    text-decoration: none;
+}
+.selection a:hover {
+    text-decoration: none !important;
+}
+.selection h3 {
+    color: #40E0D0;
+    font-weight: bold;
+}
+.selection p {
+    color: #6c757d;
+}
+.row {
+    margin-top: 25px;
+}
+.glossaryHeader {
+    color: #40E0D0;
+    font-weight: bold;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+.icon {
+    margin-bottom: 30px;
+    height: 100px;
+}
+.faqCallToAction {
+    background-image: url("https://yoga-injury-prevention.s3.us-east-2.amazonaws.com/static/img/VECTOR_BG.png");
+}
+.faqCallToAction h2 {
+    color: #40E0D0;
+    font-weight: bold;
+    margin-top: 200px;
+}
+.btn-faq {
+    margin-bottom: 200px;
+    background-color: #40E0D0;
+    color: #fff;
+    border-radius: 25px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+}

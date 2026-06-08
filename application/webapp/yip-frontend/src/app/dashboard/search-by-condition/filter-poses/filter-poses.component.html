@@ -1,0 +1,203 @@
+<div class="content">
+<div class="container">
+    <div class="row no-gutters">
+        <div class="d-flex justify-content-start">
+            <h5 class="backToSearch"
+                (click)="backToSearch()">Back to search</h5>
+        </div>
+    </div>
+    <div class="row justify-content-center no-gutters">
+        <div class="col-12">
+            <h4>These are the <span class="poseType">{{ poseType }}</span> poses for:</h4>
+            <ul class="searchedConditions">
+                <li *ngFor="let condition of conditions_searched">
+                    <p class="searchedCondition" 
+                       (click)="viewCondition(condition.id)">{{condition.name}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row justify-content-center no-gutters">
+        <div class="col-12 d-flex justify-content-start">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link"
+                     (click)="setPoseType('Safe')"
+                     [ngClass]="{'active': poseType==='Safe'}">Safe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"
+                     (click)="setPoseType('Beneficial')"
+                     [ngClass]="{'active': poseType==='Beneficial'}">Beneficial</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"
+                     (click)="setPoseType('Contraindicated')"
+                     [ngClass]="{'active': poseType==='Contraindicated'}">Contraindicated</a>
+                </li>
+              </ul>
+        </div>
+        <div class="col-12 d-flex justify-content-start">
+            <nav class="nav viewControl">
+                <a class="nav-link"
+                   (click)="setViewType('gallery')"
+                   [ngClass]="{'activated': viewType==='gallery'}">Gallery view</a>
+                <a class="nav-link"
+                   (click)="setViewType('list')"
+                   [ngClass]="{'activated': viewType==='list'}">List view</a>
+            </nav>
+        </div>
+        <div class="col-12">
+            <hr class="underline">
+        </div>
+        <div *ngIf="viewType==='gallery'">
+            <div class="row no-gutters" 
+                 *ngIf="poseType==='Contraindicated'">
+                <div *ngIf="contraindicatedPoses.contraindicated_poses.length < 1">
+                  <div class="col-12">
+                    <h5>No contraindicated poses</h5>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6"
+                     *ngFor="let pose of contraindicatedPoses.contraindicated_poses">
+                     <div class="card">
+                        <img src="{{ pose.image }}" class="card-img-top" alt="{{ pose.sanskrit_name }} {{ pose.english_name }}">
+                        <div class="card-body">
+                          <p class="card-text sanskrit-name">{{ pose.sanskrit_name }}</p>
+                          <p class="card-text english-name">{{ pose.english_name }}</p>
+                          <p class="poseInfo"
+                             (click)="viewPose(pose.id)">View pose info</p>
+                          <p *ngIf="pose.workaround_text"
+                             class="workarounds"
+                             (click)="showWorkaround(pose.id)">See workaround(s)</p>
+                          <p *ngIf="shownWorkaround===pose.id">{{ pose.workaround_text }}</p>
+                          <p *ngIf="pose.video"
+                             class="video"
+                             (click)="viewVideo(pose.video)">Watch Video</p>
+
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row no-gutters"
+                 *ngIf="poseType==='Beneficial'">
+                <div *ngIf="beneficialPoses.beneficial_poses.length < 1">
+                  <div class="col-12">
+                    <h5>No beneficial poses</h5>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6"
+                     *ngFor="let pose of beneficialPoses.beneficial_poses">
+                     <div class="card">
+                        <img src="{{ pose.image }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-text sanskrit-name">{{ pose.sanskrit_name }}</p>
+                          <p class="card-text english-name">{{ pose.english_name }}</p>
+                          <p class="poseInfo"
+                             (click)="viewPose(pose.id)">View pose info</p>
+                          <p *ngIf="pose.workaround_text"
+                             class="workarounds"
+                             (click)="showWorkaround(pose.id)">See workaround(s)</p>
+                          <p *ngIf="shownWorkaround===pose.id">{{ pose.workaround_text }}</p>
+                          <p *ngIf="pose.video"
+                             class="video"
+                             (click)="viewVideo(pose.video)">Watch Video</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row no-gutters"
+                 *ngIf="poseType==='Safe'">
+                <div *ngIf="safePoses.safe_poses.length < 1">
+                  <div class="col-12">
+                    <h5>No safe poses</h5>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6"
+                     *ngFor="let pose of safePoses.safe_poses">
+                     <div class="card">
+                        <img src="{{ pose.image }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-text sanskrit-name">{{ pose.sanskrit_name }}</p>
+                          <p class="card-text english-name">{{ pose.english_name }}</p>
+                          <p class="poseInfo"
+                             (click)="viewPose(pose.id)">View pose info</p>
+                          <p *ngIf="pose.workaround_text"
+                             class="workarounds"
+                             (click)="showWorkaround(pose.id)">See workaround(s)</p>
+                          <p *ngIf="shownWorkaround===pose.id">{{ pose.workaround_text }}</p>
+                          <p *ngIf="pose.video"
+                             class="video"
+                             (click)="viewVideo(pose.video)">Watch Video</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+          </div>
+            <div *ngIf="viewType==='list'">
+              <!-- Contraindicated Poses -->
+              <div class="row no-gutters"
+                   *ngIf="poseType==='Contraindicated'">
+                  <div class="col-12">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Sanskrit Name</th>
+                          <th scope="col">English Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pose of contraindicatedPoses.contraindicated_poses">
+                          <td>{{ pose.sanskrit_name }}</td>
+                          <td>{{ pose.english_name }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+
+              <!-- Beneficial Poses -->
+              <div class="row no-gutters"
+                   *ngIf="poseType==='Beneficial'">
+                  <div class="col-12">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Sanskrit Name</th>
+                          <th scope="col">English Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pose of beneficialPoses.beneficial_poses">
+                          <td>{{ pose.sanskrit_name }}</td>
+                          <td>{{ pose.english_name }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+
+              <!-- Safe Poses -->
+              <div class="row no-gutters"
+                   *ngIf="poseType==='Safe'">
+                  <div class="col-12">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Sanskrit Name</th>
+                          <th scope="col">English Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pose of safePoses.safe_poses">
+                          <td>{{ pose.sanskrit_name }}</td>
+                          <td>{{ pose.english_name }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+            </div>
+      </div>
+    </div>
+</div>

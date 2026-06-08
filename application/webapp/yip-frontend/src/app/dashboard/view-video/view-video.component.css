@@ -1,0 +1,15 @@
+.content {
+    margin-top: 15%;
+    margin-bottom: 200px;
+}
+.player {
+    width: 600px;
+    height: 415px;
+    margin-top: 20%;
+}
+.back {
+    color: #00aeef;
+}
+.back:hover {
+    cursor: pointer;
+}

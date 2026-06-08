@@ -1,0 +1,117 @@
+.removePointer {
+    pointer-events: none;
+}
+.poseLink {
+    cursor: pointer;
+}
+.content {
+    margin-bottom: 200px;
+}
+.row {
+    margin-top: 40px;
+}
+.table thead th {
+    color: #40E0D0;
+}
+.table tbody tr:hover {
+    cursor: pointer;
+}
+.selectedCondition {
+    background-color: #40E0D0;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 30px;
+    margin: 15px;
+}
+.selectedCondition:hover {
+    cursor: pointer;
+}
+.removeSelect {
+    margin-right: 5px;
+}
+.removeSelect p {
+    display: inline;
+    font-weight: bold;
+}
+.removeSelect:hover {
+    cursor: pointer;
+}
+
+@media(max-width: 992px) {
+    .btn {
+        margin-bottom: 20px;
+    }
+} 
+.form-control {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.conditions-header {
+    padding-left:150px;
+}
+.input-row {
+    top: -20px;
+}
+.help-icon {
+    color: #0000FF;
+}
+.btn {
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.btn-nothing-selected {
+    color: #fff;
+    background-color: #BEBEBE;
+    cursor: not-allowed;
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    border-color: #BEBEBE;
+}
+.btn-selected {
+    color: #fff;
+    background-color: turquoise;
+    cursor: pointer;
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.selectedRow {
+    background-color: #dee2e6;
+}
+.controlBar {
+    width: 40%;
+    text-align: left;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom:12%;
+    z-index: 99;
+    position: sticky;
+    position: -webkit-sticky; /* Safari */
+}
+.badge {
+    margin-right: 10px;
+}
+.viewSelectedConditions:hover {
+    font-style: italic;
+}
+.bar {
+    background-color: #8FBC8F;
+}
+.controlBarText {
+    margin-top: 15px;
+}
+.instruction {
+    text-align: left;
+    margin-bottom: 25px;
+}
+.instructionList {
+    margin-top: 25px;
+    list-style-type: none;
+}

@@ -1,0 +1,31 @@
+<div class="modal-body" data-target="#modal">
+    <h4>But are you really sure?</h4>
+    <br />
+    <div class="row">
+        <div class="col-12">
+        <form [formGroup]="cancelAccountForm">
+            <div class="form-group">
+                <textarea class="form-control form-control-lg"
+                          placeholder="Please let us know why you no longer want an account with us"
+                          formControlName="cancelReason"
+                          rows="3"
+                          required>
+                </textarea>
+
+                
+            </div>
+        </form>
+    </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <button class="btn btn-primary">No.. Continue with my subscription</button>
+        </div>
+        <div class="col-6">
+            <button [disabled]="!cancelAccountForm.valid"
+                    (click)="cancelAccount()" 
+                    class="btn btn-danger">Yes.. Cancel my account</button>
+        </div>
+    </div>
+</div>

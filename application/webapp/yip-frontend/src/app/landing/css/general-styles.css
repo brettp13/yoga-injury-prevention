@@ -1,0 +1,13 @@
+.card-text {
+    text-align: left;
+    margin-top: 35px;
+}
+
+.btn-generic {
+    border-style: solid;
+    border-width: 3px;
+    border-color: #fff;
+    border-radius: 100px;
+    padding-right: 25px;
+    padding-left: 25px;
+}

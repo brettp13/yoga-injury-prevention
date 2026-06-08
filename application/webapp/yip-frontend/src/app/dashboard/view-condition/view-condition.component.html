@@ -1,0 +1,56 @@
+<div class="header">
+    <h1>{{condition.name|uppercase}}</h1>
+</div>
+<div class="content">
+    <div class="row justify-content-center no-gutters">
+    </div>
+    <div class="row justify-content-center no-gutters">
+        <div class="col-sm-12">
+            <div class="conditionDisplay">
+                <p [innerHtml]="condition.description | safeHtml"></p>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="row justify-content-center no-gutters" style="margin-top: 50px;">
+        <div class="col-md-6 col-sm-12">
+            <img class="img-fluid" src="{{condition.image_one}}">
+        </div>
+        <div class="howYogaCanHelpText col-md-6 col-sm-12">
+            <h3>HOW YOGA CAN <span style="color:#40E0D0;">HELP</span></h3>
+            <p [innerHtml]="howYogaHelps.how_yoga_helps | safeHtml"></p>
+            <br />
+            <p *ngIf="condition.video"
+               (click)="viewVideo(condition.video)"
+               class="btn btn-primary">Watch video</p>
+        </div>
+    </div>
+    <div class="row justify-content-center no-gutters" style="margin-top: 50px;">
+        <div class="col-md-6 col-sm-12 poseList">
+            <h3>BENEFICIAL POSES</h3>
+            <div *ngIf="beneficialPoses.beneficial_poses == 0">
+                <h6 class="noPoses">No Beneficial Poses</h6>
+            </div>
+            <div>
+                <p *ngFor="let pose of beneficialPoses.beneficial_poses"
+                   class="poseDisplay"
+                   (click)="viewPose(pose.id)">{{pose.sanskrit_name}}  {{pose.english_name}}</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 poseList">
+            <h3 class="noPoses">CONTRAINDICATED POSES</h3>
+            <div *ngIf="contraindicatedPoses.contraindicated_poses == 0">
+                <h6 class="noPoses">No Contraindicated Poses</h6>
+            </div>
+            <div>
+                <p *ngFor="let pose of contraindicatedPoses.contraindicated_poses"
+                   class="poseDisplay"
+                   (click)="viewPose(pose.id)">{{pose.sanskrit_name}}   {{pose.english_name}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center no-gutters backButton">
+        <button (click)="back()"
+                class="btn btn-primary">Back</button>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+/* Media queries for .content div placement */
+@media screen and (max-width: 1000px) {
+    .content {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1100px) {
+    .content {
+        top: 5%;
+    }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1200px) {
+    .content {
+        top: 7%;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+    .content {
+        top: 10%;
+    }
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1400px) {
+    .content {
+        top: 10%;
+    }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1500px) {
+    .content {
+        top: 16%;
+    }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 1600px) {
+    .content {
+        top: 20%;
+    }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1700px) {
+    .content {
+        top: 24%;
+    }
+}
+
+@media screen and (min-width: 1700px) and (max-width: 1800px) {
+    .content {
+        top: 27%;
+    }
+}
+
+@media screen and (min-width: 1800px) and (max-width: 2200px) {
+    .content {
+        top: 30%;
+    }
+}
+
+@media screen and (min-width: 2200px) and (max-width: 2500px) {
+    .content {
+        top: 40%;
+    }
+}
+
+@media screen and (min-width: 2500px) and (max-width: 2900px) {
+    .content {
+        top: 50%;
+    }
+}
+
+@media screen and (min-width: 2900px) {
+    .content {
+        top: 60%;
+    }
+}
+/* End */

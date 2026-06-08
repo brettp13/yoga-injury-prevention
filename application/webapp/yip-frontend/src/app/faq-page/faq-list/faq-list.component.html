@@ -1,0 +1,39 @@
+<div class="header">
+    <h1>FREQUENTLY ASKED QUESTIONS (FAQ)</h1>
+</div>
+<div class="container faq-section">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div *ngFor="let faq of faqs">
+                <div class="row">
+                    <div class="col-12 question-container">
+                        <ul class="list-inline">
+                            <div class="row">
+                                <div class="col-1">
+                                    <li class="list-inline-item"><h1>Q.</h1></li>
+                                </div>
+                                <div class="col-11 align-self-center">
+                                    <li class="list-inline-item"><h4>{{faq.question}}</h4></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 answer-container">
+                        <ul class="list-inline">
+                            <div class="row">
+                                <div class="col-1">
+                                    <li class="list-inline-item"><h1>A.</h1></li>
+                                </div>
+                                <div class="col-11 align-self-center">
+                                    <li class="list-inline-item"><h4>{{faq.answer}}</h4></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

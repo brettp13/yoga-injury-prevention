@@ -1,0 +1,34 @@
+.info-row {
+    margin-top: 1px;
+}
+
+.info-img {
+    width: 100%;
+    height: 600px;
+}
+
+.info-card {
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+}
+
+.info-card-body {
+    background-color: rgba(64, 224, 208, 1);
+    color: #fff;
+    padding-top: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
+    overflow: auto;
+}
+
+.btn-info-card {
+    margin-top: 35px;
+    float: left;
+    color: #fff;
+    font-style: bold;
+}
+
+.btn-info-card:hover {
+    background-color:  rgba(64, 224, 208, 1);
+}

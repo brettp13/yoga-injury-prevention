@@ -1,0 +1,53 @@
+<div class="modal-body" data-target="#modal">
+  <div *ngIf="!forgotPasswordForm">
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input 
+          class="form-control form-control-lg" 
+          type="email" 
+          placeholder="Your email"
+          formControlName="email">
+
+      <div *ngIf="email.invalid && (email.dirty || email.touched)"
+           class="alert alert-danger">
+
+        <span *ngIf="email.errors.required">Email is required</span>
+        <span *ngIf="email.errors.email">Please enter a valid email</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <input 
+          class="form-control form-control-lg" 
+          type="password" 
+          placeholder="Password"
+          formControlName="password">
+
+      <div *ngIf="password.invalid && (password.dirty || password.touched)"
+           class="alert alert-danger">
+        
+        <span *ngIf="password.errors.required">Password is required</span>    
+      </div>
+    </div>
+
+    <div *ngIf="signInFormErrorMessage.length > 0" class="alert alert-danger">{{signInFormErrorMessage[0]}}</div>
+
+    <div *ngIf="newPasswordSentAlert"
+         class="alert alert-success"
+         style="margin-top:20px; margin-bottom:20px;">
+      We've sent a new password to your email.
+    </div>
+
+    <button [disabled]="!signInForm.valid"
+            (click)="onSubmit()"
+            class="btn btn-primary">Login</button>
+
+    <button class="btn btn-danger"
+            style="margin-left: 25px;"
+            (click)="forgotPassword()">Forgot Password</button>
+  </form>
+</div>
+<div *ngIf="forgotPasswordForm">
+  <app-forgot-password></app-forgot-password>
+</div>
+
+</div>

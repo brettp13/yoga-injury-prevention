@@ -4,7 +4,8 @@
 # (e.g. a DigitalOcean droplet).
 #
 # Usage:
-#   ./deploy.sh          # slim stack (no ELK logging stack)
+#   ./deploy.sh          # slim stack (no logging stack)
+#   ./deploy.sh --loki   # include Loki + Promtail + Grafana (light, fits 4GB)
 #   ./deploy.sh --elk    # include the ELK logging stack (needs ~8GB RAM)
 #
 set -euo pipefail
@@ -23,10 +24,22 @@ if [ ! -f .env ]; then
 fi
 
 PROFILE_ARGS=()
-if [ "${1:-}" == "--elk" ]; then
-  PROFILE_ARGS=(--profile elk)
-  echo "==> ELK profile enabled"
-fi
+for arg in "$@"; do
+  case "$arg" in
+    --elk)
+      PROFILE_ARGS+=(--profile elk)
+      echo "==> ELK profile enabled"
+      ;;
+    --loki)
+      PROFILE_ARGS+=(--profile loki)
+      echo "==> Loki/Grafana profile enabled"
+      ;;
+    *)
+      echo "Unknown option: $arg (supported: --loki, --elk)" >&2
+      exit 1
+      ;;
+  esac
+done
 
 echo "==> Pulling latest code (fast-forward only)"
 git -C "$REPO_DIR" pull --ff-only || echo "   (skipped: not a clean fast-forward or not a git checkout)"

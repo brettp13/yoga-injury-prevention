@@ -1,6 +1,8 @@
-# ELK services (elasticsearch, logstash, kibana, filebeat) are gated behind the "elk"
-# profile, so they are EXCLUDED by default for a slim stack. Include them with:
-#   ENV=prod docker compose --env-file .env --profile elk up -d --build
+# Optional logging stacks (both EXCLUDED by default for a slim stack):
+#   --profile loki  ->  Loki + Promtail + Grafana (lightweight, ~0.5GB RAM, fits 4GB droplet)
+#   --profile elk   ->  Elasticsearch + Logstash + Kibana + Filebeat (heavy, needs 8GB+)
+# Example:
+#   ENV=prod docker compose --env-file .env --profile loki up -d --build
 services:
     webapp:
         container_name: webapp
@@ -137,6 +139,54 @@ services:
         labels:
             - "co.elastic.logs/enabled=false"
 
+    loki:
+        profiles: ["loki"]
+        container_name: loki
+        image: grafana/loki:2.9.8
+        restart: on-failure
+        expose:
+            - "3100"
+        volumes:
+            - loki_data_volume:/loki
+        labels:
+            - "co.elastic.logs/enabled=false"
+
+    promtail:
+        profiles: ["loki"]
+        container_name: promtail
+        image: grafana/promtail:2.9.8
+        restart: on-failure
+        volumes:
+            - "./volumes/promtail/promtail-config.yml:/etc/promtail/config.yml:ro"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+        command: ["-config.file=/etc/promtail/config.yml"]
+        depends_on:
+            - loki
+        labels:
+            - "co.elastic.logs/enabled=false"
+
+    grafana:
+        profiles: ["loki"]
+        container_name: grafana
+        image: grafana/grafana:10.4.2
+        restart: on-failure
+        expose:
+            - "3000"
+        environment:
+            # Served behind nginx at /grafana/ (see prod-nginx.conf)
+            - GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s/grafana/
+            - GF_SERVER_SERVE_FROM_SUB_PATH=true
+            - GF_SECURITY_ADMIN_USER=admin
+            - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+        volumes:
+            - grafana_data_volume:/var/lib/grafana
+            - "./volumes/grafana/provisioning:/etc/grafana/provisioning:ro"
+            - "./volumes/grafana/dashboards:/var/lib/grafana/dashboards:ro"
+        depends_on:
+            - loki
+        labels:
+            - "co.elastic.logs/enabled=false"
+
     rabbitmq:
         container_name: rabbitmq
         build:
@@ -194,4 +244,8 @@ volumes:
     pg_data_volume:
         external: true
     es_data_volume:
+        driver: local
+    loki_data_volume:
+        driver: local
+    grafana_data_volume:
         driver: local

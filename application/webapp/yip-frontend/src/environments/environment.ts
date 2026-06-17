@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://127.0.0.1',
+  // Empty = same-origin: API calls become relative paths (e.g. '/conditions/...'),
+  // so the app works at localhost, any droplet IP, or a domain, over HTTP or HTTPS,
+  // without rebuilding. nginx serves both the SPA and the API on the same origin.
+  API_URL: '',
 };
 
 /*
